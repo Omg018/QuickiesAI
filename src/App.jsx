@@ -11,6 +11,11 @@ import GenerateImages from './pages/GenerateImages.jsx'
 import Community from './pages/Community.jsx'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
+/**
+ * Application root component that defines the client-side routing tree.
+ *
+ * @returns {JSX.Element} The root JSX element containing the app's Routes and route hierarchy.
+ */
 function App() {
   return (
     <div >
