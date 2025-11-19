@@ -1,0 +1,20 @@
+import React from 'react'
+import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
+import { assets } from '../assets/assets'
+import AiInfo from '../components/AiInfo'
+import Testimonial from '../components/Testimonial'
+
+const Home = () => {
+    return (
+        <div>
+            <Navbar />
+            <Hero/>
+            <AiInfo/>
+            <Testimonial/>
+            
+        </div>
+    )
+}
+
+export default Home
