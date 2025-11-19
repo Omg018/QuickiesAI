@@ -9,4 +9,3 @@ const RemoveObject = () => {
 }
 
 export default RemoveObject
-RemoveObject

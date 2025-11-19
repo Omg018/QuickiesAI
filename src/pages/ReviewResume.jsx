@@ -9,4 +9,3 @@ const ReviewResume = () => {
 }
 
 export default ReviewResume
-ReviewResume

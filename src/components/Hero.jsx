@@ -5,7 +5,7 @@ const Hero = () => {
     const navigate = useNavigate();
   return (
     <div>
-      <img src={assets.gradientBackground} alt="" className='h-screen sm:w-full lg:w-full ' />
+      <img src={assets.gradientBackground} alt="" className='h-screen sm:w-full lg:w-full z-0 ' />
             <div className='absolute inset-0 flex flex-col justify-center items-center text-center p-4  ' >
                 <div
                     // Base (XS) | SM | MD | LG (default) | XL 

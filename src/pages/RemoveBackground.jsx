@@ -9,4 +9,3 @@ const RemoveBackground = () => {
 }
 
 export default RemoveBackground
-RemoveBackground
