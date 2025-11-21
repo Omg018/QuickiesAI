@@ -5,9 +5,10 @@ import assets from '../assets/assets';
 
 const Testimonial = () => {
     return (
-        <div>
-            <div className='flex flex-col items-center justify-center p-8'>
-                <div className='text-6xl font-bold'>Loved Our Work</div>
+        <div className='mt-3 mb-2'>
+            
+            <div className='flex flex-col items-center justify-center p-8 '>
+                <div className='text-6xl font-bold mb-5'>Loved By Creators</div>
                 <div> We dont just fake our words</div>
             </div>
             <div className='flex flex-wrap justify-center'>

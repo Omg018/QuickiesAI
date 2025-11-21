@@ -2,8 +2,8 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>
-      Dashboard
+    <div className='relat flex justify-center h-screen'>
+     
       
     </div>
   )
