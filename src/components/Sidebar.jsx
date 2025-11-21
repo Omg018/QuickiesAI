@@ -24,7 +24,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
         { name: "RemoveBackground", icon: <LucideSettings />, path: "/ai/remove-background" },
         { name: "GenerateImages", icon: <LucideSettings />, path: "/ai/generate-images" },
         { name: "Community", icon: <LucideSettings />, path: "/ai/community" },
-        { name: "Game", icon: <LucideGamepad2 />, path: "/ai/Game" },
+        { name: "Game", icon: <LucideGamepad2 />, path: "/ai/game" },
     ]
     return (
         <div>
