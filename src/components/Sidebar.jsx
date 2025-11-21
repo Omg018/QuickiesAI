@@ -1,18 +1,17 @@
 import { SignIn, UserProfile, useUser, UserAvatar, SignOutButton, useClerk } from "@clerk/clerk-react"
-// 1. IMPORT LOGOUT ICON
-import { LucideAirplay, LucideShoppingBag, LucideMail, LucideUser, LucideSettings, LucideGamepad2, LogOut } from "lucide-react";
+import { LucideGamepad2, LogOut,LucideLayoutDashboard,LucidePencilLine,LucideFileEdit,LucideUserCheck,LucideEraser,LucideCameraOff,LucideImagePlus, LucideUsers } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ sidebar, setSidebar }) => {
-    // 2. DESTRUCTURE signOut FROM useUser()
     const { isLoaded, isSignedIn, user } = useUser();
     const {signOut, openUserProfile} = useClerk();
     const navigate = useNavigate();
 
 
     if (!isLoaded) {
-        return null; // or a loading spinner component
+        return null; 
     }
 
     if (!isSignedIn) {
@@ -20,29 +19,24 @@ const Sidebar = ({ sidebar, setSidebar }) => {
     }
 
     const navitems = [
-        
-        { name: "BlogTitles", icon: <LucideAirplay />, path: "/ai/Blog-Titles" },
-        { name: "WriteArticle", icon: <LucideShoppingBag />, path: "/ai/write-article" },
-        { name: "ReviewResume", icon: <LucideMail />, path: "/ai/review-resume" },
-        { name: "RemoveObject", icon: <LucideUser />, path: "/ai/remove-object" },
-        { name: "RemoveBackground", icon: <LucideSettings />, path: "/ai/remove-background" },
-        { name: "GenerateImages", icon: <LucideSettings />, path: "/ai/generate-images" },
-        { name: "Community", icon: <LucideSettings />, path: "/ai/community" },
+        { name: "Dashboard", icon: <LucideLayoutDashboard />, path: "/ai/dashboard" },
+        { name: "BlogTitles", icon: <LucidePencilLine />, path: "/ai/Blog-Titles" },
+        { name: "WriteArticle", icon: <LucideFileEdit />, path: "/ai/write-article" },
+        { name: "ReviewResume", icon: <LucideUserCheck />, path: "/ai/review-resume" },
+        { name: "RemoveObject", icon: <LucideEraser />, path: "/ai/remove-object" },
+        { name: "RemoveBackground", icon: <LucideCameraOff />, path: "/ai/remove-background" },
+        { name: "GenerateImages", icon: <LucideImagePlus />, path: "/ai/generate-images" },
+        { name: "Community", icon: <LucideUsers />, path: "/ai/community" },
         { name: "Game", icon: <LucideGamepad2 />, path: "/ai/Game" },
     ]
     return (
         <div>
-            {/* 3. Use 'flex-col' and 'justify-between' to push the bottom section down */}
             <div className="relative flex h-[calc(100vh-57px)] w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
-                
-                {/* USER PROFILE INFO SECTION */}
                 <div className="p-4 mb-2 flex flex-col justify-center items-center">
-                    {/* Note: I changed w-15 h-15 to a standard w-12 h-12 for common Tailwind sizes */}
                     <UserAvatar className="rounded-full w-12 h-12" /> 
                     <div className="mt-2 font-semibold text-lg text-gray-900">{user.fullName || user.emailAddresses[0].emailAddress}</div>
                 </div>
 
-                {/* NAVIGATION ITEMS */}
                 <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700 overflow-y-auto">
                     {navitems.map((item, index) => {
                         return (

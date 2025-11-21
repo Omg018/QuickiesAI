@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [creations, setCreations] = useState(MOCK_CREATIONS);
 
   return (
-    <div className='flex flex-col p-6 space-y-6 bg-gray-50 min-h-screen'>
+    <div className='flex flex-col p-6 space-y-6 bg-gray-50 min-h-screen '>
 
       <div className='flex flex-col sm:flex-row gap-6'>
 
@@ -27,12 +27,9 @@ const Dashboard = () => {
         </div>
 
       </div>
-
-      {/* 2. BOTTOM SECTION: RECENT CREATIONS */}
       <div className='flex flex-col space-y-4'>
         <h2 className='text-2xl font-bold text-gray-900 border-b pb-2'>Recent Creations</h2>
 
-        {/* Container for Recent Creation Boxes (Grid recommended for flow) */}
         {creations.length > 0 ? (
           <div className=''>
             {creations.map((creation) => (
