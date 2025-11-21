@@ -10,6 +10,7 @@ import RemoveBackground from './pages/RemoveBackground.jsx'
 import GenerateImages from './pages/GenerateImages.jsx'
 import Community from './pages/Community.jsx'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import Game from './pages/Game.jsx'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="remove-background" element={<RemoveBackground />} />
           <Route path="generate-images" element={<GenerateImages />} />
           <Route path="community" element={<Community />} />
+          <Route path="game" element={<Game />} />
         </Route>
       </Routes>
     </div>

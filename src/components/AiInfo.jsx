@@ -6,7 +6,8 @@ const AiInfo = () => {
 
     const navigate = useNavigate();
     return (
-        <div className='flex flex-col items-center '>
+        <div className='flex flex-col items-center mb-15 mt-20'>
+            
             <div className='flex flex-col items-center'>
                 <div className='text-6xl font-bold mt-20 mb-5'> Powerfull AI Tools</div>
                 <div>Everything you need to create is in here</div>
