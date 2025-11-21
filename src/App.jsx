@@ -19,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path="/ai" element={<Layout />}>
           <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="Blog-Titles" element={<BlogTitles />} />
           <Route path="write-article" element={<WriteArticle />} />
           <Route path="review-resume" element={<ReviewResume />} />
