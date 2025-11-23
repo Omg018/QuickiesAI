@@ -9,4 +9,4 @@ const GenerateImages = () => {
   )
 }
 
-export default GenerateImages
+export default GenerateImages   
