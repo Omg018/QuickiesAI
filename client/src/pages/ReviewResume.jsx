@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Upload, FileText, CheckCircle, AlertCircle, Sparkles } from 'lucide-react'
+import { useAuth } from '@clerk/clerk-react'
 
 const ReviewResume = () => {
+  const { getToken } = useAuth()
   const [file, setFile] = useState(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [feedback, setFeedback] = useState(null)
@@ -14,34 +16,35 @@ const ReviewResume = () => {
     }
   }
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!file) return
     setIsAnalyzing(true)
 
-    // Mock analysis
-    setTimeout(() => {
-      setFeedback({
-        score: 8.5,
-        strengths: [
-          'Clear and concise formatting',
-          'Strong action verbs in experience section',
-          'Relevant skills highlighted',
-          'Good use of quantifiable achievements'
-        ],
-        improvements: [
-          'Add more specific metrics to achievements',
-          'Include a professional summary at the top',
-          'Consider adding relevant certifications',
-          'Tailor keywords to match job descriptions'
-        ],
-        suggestions: [
-          'Use consistent date formatting throughout',
-          'Ensure contact information is up-to-date',
-          'Proofread for any typos or grammatical errors'
-        ]
+    try {
+      const token = await getToken()
+      const formData = new FormData()
+      formData.append('resume', file)
+
+      const res = await fetch("http://localhost:3001/api/ai/review-resume", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        body: formData
       })
+      
+      const data = await res.json()
+      if (data.success) {
+        setFeedback(data.feedback)
+      } else {
+        alert(data.message || "Failed to analyze resume. Please try again.")
+      }
+    } catch (err) {
+      console.error("Resume review failed:", err)
+      alert("An error occurred while uploading. Please try again.")
+    } finally {
       setIsAnalyzing(false)
-    }, 2000)
+    }
   }
 
   return (
@@ -79,7 +82,7 @@ const ReviewResume = () => {
               <div className="mt-4 p-4 bg-indigo-50 rounded-lg flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <FileText className="w-5 h-5 text-indigo-600" />
-                  <span className="text-sm font-medium text-gray-700">{file.name}</span>
+                  <span className="text-sm font-medium text-gray-700 truncate max-w-[200px]">{file.name}</span>
                 </div>
                 <button
                   onClick={handleAnalyze}
@@ -127,7 +130,7 @@ const ReviewResume = () => {
               <h3 className="text-xl font-semibold text-gray-900">Strengths</h3>
             </div>
             <ul className="space-y-2">
-              {feedback.strengths.map((strength, index) => (
+              {feedback.strengths?.map((strength, index) => (
                 <li key={index} className="flex items-start gap-2 text-gray-700">
                   <span className="text-green-500 mt-1">✓</span>
                   <span>{strength}</span>
@@ -143,7 +146,7 @@ const ReviewResume = () => {
               <h3 className="text-xl font-semibold text-gray-900">Areas for Improvement</h3>
             </div>
             <ul className="space-y-2">
-              {feedback.improvements.map((improvement, index) => (
+              {feedback.improvements?.map((improvement, index) => (
                 <li key={index} className="flex items-start gap-2 text-gray-700">
                   <span className="text-orange-500 mt-1">→</span>
                   <span>{improvement}</span>
@@ -159,7 +162,7 @@ const ReviewResume = () => {
               <h3 className="text-xl font-semibold text-gray-900">Additional Suggestions</h3>
             </div>
             <ul className="space-y-2">
-              {feedback.suggestions.map((suggestion, index) => (
+              {feedback.suggestions?.map((suggestion, index) => (
                 <li key={index} className="flex items-start gap-2 text-gray-700">
                   <span className="text-indigo-500 mt-1">•</span>
                   <span>{suggestion}</span>

@@ -1,12 +1,12 @@
-import { SignIn, UserProfile, useUser, UserAvatar, SignOutButton, useClerk } from "@clerk/clerk-react"
-import { LucideGamepad2, LogOut,LucideLayoutDashboard,LucidePencilLine,LucideFileEdit,LucideUserCheck,LucideEraser,LucideCameraOff,LucideImagePlus, LucideUsers } from "lucide-react";
+import { UserAvatar, useUser, useClerk } from "@clerk/clerk-react"
+import { LogOut, LucideLayoutDashboard, LucidePencilLine, LucideFileEdit, LucideEraser, LucideCameraOff, LucideImagePlus, LucideUsers } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ sidebar, setSidebar }) => {
     const { isLoaded, isSignedIn, user } = useUser();
-    const {signOut, openUserProfile} = useClerk();
+    const { signOut, openUserProfile } = useClerk();
     const navigate = useNavigate();
 
 
@@ -20,14 +20,12 @@ const Sidebar = ({ sidebar, setSidebar }) => {
 
     const navitems = [
         { name: "Dashboard", icon: <LucideLayoutDashboard />, path: "/ai/dashboard" },
-        { name: "BlogTitles", icon: <LucidePencilLine />, path: "/ai/Blog-Titles" },
-        { name: "WriteArticle", icon: <LucideFileEdit />, path: "/ai/write-article" },
-        { name: "ReviewResume", icon: <LucideUserCheck />, path: "/ai/review-resume" },
-        { name: "RemoveObject", icon: <LucideEraser />, path: "/ai/remove-object" },
-        { name: "RemoveBackground", icon: <LucideCameraOff />, path: "/ai/remove-background" },
-        { name: "GenerateImages", icon: <LucideImagePlus />, path: "/ai/generate-images" },
+        { name: "Blog Generator", icon: <LucidePencilLine />, path: "/ai/Blog-Titles" },
+        { name: "Write Article", icon: <LucideFileEdit />, path: "/ai/write-article" },
+        { name: "Remove Object", icon: <LucideEraser />, path: "/ai/remove-object" },
+        { name: "Remove Background", icon: <LucideCameraOff />, path: "/ai/remove-background" },
+        { name: "Generate Images", icon: <LucideImagePlus />, path: "/ai/generate-images" },
         { name: "Community", icon: <LucideUsers />, path: "/ai/community" },
-        { name: "Game", icon: <LucideGamepad2 />, path: "/ai/Game" },
     ]
     return (
         <div>
