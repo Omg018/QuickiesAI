@@ -12,7 +12,8 @@ import {
     getCommunity,
     togglePublish,
     toggleLike,
-    deleteCreation
+    deleteCreation,
+    reviewResume
 } from '../controllers/aiController.js'
 
 const router = express.Router()
@@ -61,6 +62,7 @@ router.post('/generate-blog', auth, generateBlog)
 router.post('/generate-article', auth, generateArticle)
 router.post('/generate-titles', auth, generateTitles)
 router.post('/generate-image', auth, generateImage)
+router.post('/review-resume', auth, fileUpload.single('resume'), reviewResume)
 
 // File/Image Processing Upload Routes
 router.post('/upload-creation', auth, fileUpload.single('image'), uploadCreation)

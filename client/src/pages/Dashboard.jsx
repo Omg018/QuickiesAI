@@ -93,7 +93,7 @@ const Dashboard = () => {
           <div className="text-left">
             <p className="text-[10px] text-indigo-200 font-bold uppercase tracking-wider">Account Tier</p>
             <div className="text-sm font-bold flex items-center gap-1">
-              <Protect plan="premium" fallback={<span>Free Tier ({freeUsage}/10 calls)</span>}>
+              <Protect plan="premium" fallback={<span>Free Tier ({freeUsage}/100 calls)</span>}>
                 <span className="text-yellow-300 flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> Premium Member</span>
               </Protect>
             </div>

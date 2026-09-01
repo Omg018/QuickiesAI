@@ -45,6 +45,16 @@ app.use((req, res) => {
     res.status(404).send('Not Found');
 });
 
-app.listen(port, () => {
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+});
+process.on('unhandledRejection', (reason) => {
+    console.error('Unhandled Rejection:', reason);
+});
+
+const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`)
-})
+});
+
+// Keep process active
+process.stdin.resume();
